@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lost and Found — Campus 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="nav-top" aria-label="Primary">
+            <a class="brand" href="#top">Lost &amp; Found</a>
+            <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="#top">Home</a>
+                <a href="#report-lost">Report Lost</a>
+                <a href="#report-found">Report Found</a>
+                <a href="#lost-items">Lost Items</a>
+                <a href="#found-items">Found Items</a>
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main id="main">
+        <!-- Hero -->
+        <section id="top" class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h1 id="hero-title">Find what you’ve lost</h1>
+                <p class="hero-lead">Connect with your community to recover lost items quickly. Report, search, and
+                    reunite belongings across campus.</p>
+                <div class="hero-actions">
+                    <a href="#report-lost" class="btn btn-primary">Report lost item</a>
+                    <a href="#found-items" class="btn btn-secondary">Browse found items</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80"
+                    alt="People collaborating and handing items to one another" class="hero-image" width="900"
+                    height="600" loading="eager">
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="visually-hidden">Why use this site</h2>
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">⚡</span>
+                    <h3>Quick search</h3>
+                    <p>Search lost and found listings in one place. Match by item name across local records and live
+                        sample data.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">📱</span>
+                    <h3>Easy reporting</h3>
+                    <p>Short forms for lost and found items with dates, locations, and optional images for clearer
+                        matches.</p>
+                </article>
+                <article class="feature-card">
+                    <span class="feature-icon" aria-hidden="true">🤝</span>
+                    <h3>Community driven</h3>
+                    <p>Built for students and staff: share accurate details so finders and owners can reconnect
+                        faster.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Quick search -->
+        <section id="search" class="panel panel--tight" aria-labelledby="search-heading">
+            <div class="panel-inner search-card">
+                <h2 id="search-heading">Quick search</h2>
+                <p class="muted">Try <strong>phone</strong>, <strong>keys</strong>, or <strong>ID</strong> to see local
+                    and API-backed sample rows.</p>
+                <div class="search-row">
+                    <label class="visually-hidden" for="search-input">Search items</label>
+                    <input type="search" id="search-input" placeholder="Search by item name…" autocomplete="off">
+                    <button type="button" id="search-btn" class="btn btn-primary">Search</button>
+                </div>
+                <div id="search-results" class="search-results" role="region" aria-live="polite"></div>
+            </div>
+        </section>
+
+        <!-- Report lost -->
+        <section id="report-lost" class="panel">
+            <h2>Report lost item</h2>
+            <p class="section-intro">Tell us what went missing and where you last had it. We’ll log it for the listings
+                below.</p>
+            <form class="form-card" id="form-lost">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="lost-name">Your name</label>
+                        <input type="text" id="lost-name" name="name" required autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="lost-email">Email</label>
+                        <input type="email" id="lost-email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="lost-item">Item lost</label>
+                        <input type="text" id="lost-item" name="item" required>
+                    </div>
+                    <div class="field">
+                        <label for="lost-location">Location last seen</label>
+                        <input type="text" id="lost-location" name="location" required>
+                    </div>
+                    <div class="field field--full">
+                        <label for="lost-date">Date lost</label>
+                        <input type="date" id="lost-date" name="date" required>
+                    </div>
+                    <div class="field field--full">
+                        <label for="lost-description">Description</label>
+                        <textarea id="lost-description" name="description" rows="4"
+                            placeholder="Colour, brand, distinguishing marks…"></textarea>
+                    </div>
+                    <div class="field field--full">
+                        <label for="lost-image">Photo (optional)</label>
+                        <input type="file" id="lost-image" name="image" accept="image/*">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit lost report</button>
+            </form>
+        </section>
+
+        <!-- Report found -->
+        <section id="report-found" class="panel">
+            <h2>Report found item</h2>
+            <p class="section-intro">Found something? Add it here so the owner can search and reach out.</p>
+            <form class="form-card" id="form-found">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="found-name">Your name</label>
+                        <input type="text" id="found-name" name="name" required autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="found-email">Email</label>
+                        <input type="email" id="found-email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="field">
+                        <label for="found-item">Item found</label>
+                        <input type="text" id="found-item" name="item" required>
+                    </div>
+                    <div class="field">
+                        <label for="found-location">Location found</label>
+                        <input type="text" id="found-location" name="location" required>
+                    </div>
+                    <div class="field field--full">
+                        <label for="found-date">Date found</label>
+                        <input type="date" id="found-date" name="date" required>
+                    </div>
+                    <div class="field field--full">
+                        <label for="found-description">Description</label>
+                        <textarea id="found-description" name="description" rows="4"></textarea>
+                    </div>
+                    <div class="field field--full">
+                        <label for="found-image">Photo (optional)</label>
+                        <input type="file" id="found-image" name="image" accept="image/*">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit found report</button>
+            </form>
+        </section>
+
+        <!-- Lost items table -->
+        <section id="lost-items" class="panel">
+            <h2>Lost items</h2>
+            <p class="section-intro">Live list includes your new reports from this session.</p>
+            <div class="table-wrap">
+                <table class="data-table" id="lost-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lost-tbody">
+                        <tr>
+                            <td>Phone</td>
+                            <td>Library</td>
+                            <td>10 May</td>
+                            <td>202516809@spu.ac.za/td>
+                        </tr>
+                        <tr>
+                            <td>ID Card</td>
+                            <td>Cafeteria</td>
+                            <td>12 May</td>
+                            <td>202713697@spu.ac.za</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Found items table -->
+        <section id="found-items" class="panel">
+            <h2>Found items</h2>
+            <p class="section-intro">Items turned in or reported via the form appear here.</p>
+            <div class="table-wrap">
+                <table class="data-table" id="found-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody id="found-tbody">
+                        <tr>
+                            <td>Keys</td>
+                            <td>Parking</td>
+                            <td>15 May</td>
+                            <td>admin@email.com</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about" class="panel">
+            <h2>About</h2>
+            <p>This site helps students and staff report and find lost items on campus. Cards, phones, keys, and IDs
+                are reunited faster when details are shared in one trusted place.</p>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="panel">
+            <h2>Frequently asked questions</h2>
+            <div class="faq-list">
+                <article class="faq-item">
+                    <h3>How do I update a report?</h3>
+                    <p>Submit the form again with the new details, or email the team with your reference information.
+                    </p>
+                </article>
+                <article class="faq-item">
+                    <h3>Can I add an image after submission?</h3>
+                    <p>Yes. Email <a href="mailto:lostandfound@gmail.com">lostandfound@gmail.com</a> with the image
+                        attached and the item name in the subject line.</p>
+                </article>
+                <article class="faq-item">
+                    <h3>What if I find something valuable?</h3>
+                    <p>Use <strong>Report found</strong>, keep the item secure, and consider notifying campus security
+                        for high-value property.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Tips -->
+        <section id="tips" class="panel panel--accent">
+            <h2>Campus tips</h2>
+            <ul class="tips-list">
+                <li>Keep your student ID and keys in a dedicated pocket or pouch.</li>
+                <li>Check listings daily if something went missing after class.</li>
+                <li>Label belongings with your name or a reachable email where appropriate.</li>
+            </ul>
+        </section>
+
+        <!-- Testimonials -->
+        <section id="testimonials" class="panel">
+            <h2>What people say</h2>
+            <div class="testimonial">
+                <p>“This site helped me get my wallet back within a day. Reporting was straightforward.”</p>
+                <cite>— Sarah Baloyi, Student</cite>
+            </div>
+            <div class="testimonial">
+                <p>“Much easier for staff to point people to one organised list.”</p>
+                <cite>— Melvin Kisten , Faculty</cite>
+            </div>
+            <div class="testimonial">
+                <p>“Found my keys thanks to a parking-lot listing. Highly recommend.”</p>
+                <cite>— Dipuo Phahlane, Student</cite>
+            </div>
+        </section>
+
+        <!-- News -->
+        <section id="news" class="panel">
+            <h2>Latest updates</h2>
+            <article class="news-item">
+                <h3>April 2026 — Image uploads</h3>
+                <p>You can attach photos on lost and found forms to speed up identification.</p>
+            </article>
+            <article class="news-item">
+                <h3>March 2026 — Campus security</h3>
+                <p>We’re coordinating with security for faster handover of valuable items.</p>
+            </article>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="panel">
+            <h2>Contact us</h2>
+            <p>Email: <a href="mailto:lostandfound@gmail.com">lostandfound@gmail.com</a><br>
+                Phone: <a href="tel:+27601421920">060-142-1920</a><br>
+                Social: @lostandfoundspu</p>
+
+            <h3 class="contact-form-title">Send a message</h3>
+            <form class="form-card" id="form-contact">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" required autocomplete="name">
+                    </div>
+                    <div class="field">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" required autocomplete="email">
+                    </div>
+                    <div class="field field--full">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" rows="4" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-brand">Lost &amp; Found 2026</p>
+            <p class="muted">Helping students and staff recover missing items on campus.</p>
+            <nav class="footer-nav" aria-label="Footer">
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <p class="copyright">© 2026 Lost &amp; Found. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+    <style>
+        :root {
+            --surface: #f0f7ff;
+            --surface-strong: #dbeafe;
+            --surface-card: #ffffff;
+            --border: #c7d2fe;
+            --border-strong: #1e293b;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --primary-light: #dbeafe;
+            --secondary: #059669;
+            --secondary-dark: #047857;
+            --accent: #f59e0b;
+            --accent-light: #fef3c7;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --max: 1120px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(160deg, #1c76a3 0%, #0f172a 45%, #334155 100%);
+            min-height: 100vh;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            z-index: 1000;
+            border-radius: 0 0 8px 0;
+        }
+
+        .skip-link:focus {
+            left: 0;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .nav-top {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.875rem 1.5rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+
+        .brand:hover {
+            color: var(--primary);
+        }
+
+        .nav-toggle {
+            display: none;
+            border: 1px solid var(--border);
+            background: var(--surface-card);
+            padding: 0.5rem 0.85rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.25rem 1rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.35rem 0.5rem;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+        }
+
+        main {
+            padding-bottom: 3rem;
+        }
+
+        .hero {
+            max-width: min(1200px, 100% - 2rem);
+            margin: 1.5rem auto 0;
+            padding: clamp(2rem, 5vw, 3.5rem);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(2rem, 4vw, 3.5rem);
+            align-items: center;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.95), rgba(14, 165, 233, 0.88));
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            margin: 0 0 1rem;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .hero-lead {
+            margin: 0 0 1.75rem;
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 36ch;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 520px;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 25px 50px rgba(15, 23, 42, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            object-fit: cover;
+            display: block;
+            margin-inline: auto;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.35rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #fff, #e0e7ff);
+            color: var(--primary-dark);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.2);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: #ecfdf5;
+            box-shadow: 0 8px 24px rgba(5, 150, 105, 0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .features {
+            max-width: var(--max);
+            margin: 2rem auto 0;
+            padding: 0 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .feature-card {
+            background: var(--surface-card);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .panel {
+            max-width: var(--max);
+            margin: 1.5rem auto 0;
+            padding: clamp(1.75rem, 4vw, 2.5rem);
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            width: min(100% - 2rem, var(--max));
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .panel--tight .panel-inner {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .panel--accent {
+            background: linear-gradient(135deg, #fef3c7, #fff7ed);
+            border-color: rgba(245, 158, 11, 0.35);
+        }
+
+        .panel h2 {
+            margin: 0 0 0.5rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--primary-dark);
+        }
+
+        .section-intro,
+        .muted {
+            color: var(--text-muted);
+            margin: 0 0 1.25rem;
+        }
+
+        .search-card {
+            text-align: center;
+        }
+
+        .search-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .search-row input {
+            flex: 1 1 220px;
+            min-width: 0;
+        }
+
+        .search-results {
+            margin-top: 1.25rem;
+            text-align: left;
+        }
+
+        .form-card {
+            background: var(--surface-card);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .field--full {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.35rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="search"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            border: 2px solid var(--border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.15);
+        }
+
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface-card);
+            min-width: 520px;
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        .data-table tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .data-table tbody tr:hover {
+            background: #eff6ff;
+        }
+
+        .faq-list {
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .faq-item h3 {
+            margin: 0 0 0.35rem;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+
+        .faq-item p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .tips-list {
+            margin: 0;
+            padding-left: 1.25rem;
+            color: var(--text);
+        }
+
+        .tips-list li {
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial {
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--surface-card);
+            border-radius: var(--radius);
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+        }
+
+        .testimonial p {
+            margin: 0 0 0.5rem;
+            font-style: italic;
+        }
+
+        .testimonial cite {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        .news-item h3 {
+            margin: 0 0 0.35rem;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+
+        .news-item p {
+            margin: 0 0 1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-form-title {
+            margin-top: 1.5rem;
+            font-size: 1.15rem;
+        }
+
+        .site-footer {
+            margin-top: 2rem;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-dark), #0f172a);
+            color: #e2e8f0;
+            text-align: center;
+        }
+
+        .footer-inner {
+            max-width: var(--max);
+            margin: 0 auto;
+        }
+
+        .footer-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem;
+        }
+
+        .site-footer .muted {
+            color: #94a3b8;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.25rem 0;
+        }
+
+        .footer-nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.35rem 0.75rem;
+            border-radius: 8px;
+        }
+
+        .footer-nav a:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .copyright {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        a {
+            color: var(--primary);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            max-width: min(360px, calc(100% - 2rem));
+            padding: 1rem 1.25rem;
+            background: var(--text);
+            color: #fff;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            z-index: 200;
+            font-size: 0.95rem;
+        }
+
+        .toast[hidden] {
+            display: none;
+        }
+
+        .msg-error {
+            color: var(--error);
+            font-weight: 500;
+        }
+
+        .msg-warn {
+            color: var(--warning);
+            font-weight: 500;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-lead {
+                margin-inline: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-toggle {
+                display: inline-block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .nav-links.is-open {
+                display: flex;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .field--full {
+                grid-column: 1;
+            }
+        }
+    </style>
+
+    <script>
+        const API_URL = 'https://jsonplaceholder.typicode.com/posts';
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function showToast(message) {
+            const el = document.getElementById('toast');
+            el.textContent = message;
+            el.hidden = false;
+            clearTimeout(showToast._t);
+            showToast._t = setTimeout(() => {
+                el.hidden = true;
+            }, 4000);
+        }
+
+        async function fetchItems() {
+            try {
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('Bad response');
+                const data = await response.json();
+                return data.slice(0, 10).map((post) => ({
+                    item: post.title.split(/\s+/).slice(0, 2).join(' ') || 'Item',
+                    location: 'Campus',
+                    date: '2026',
+                    contact: 'user@email.com',
+                }));
+            } catch (e) {
+                console.error(e);
+                return [];
+            }
+        }
+
+        function displayResults(results) {
+            const resultsDiv = document.getElementById('search-results');
+            if (results.length === 0) {
+                resultsDiv.innerHTML = '<p class="msg-warn">No items found.</p>';
+                return;
+            }
+            const rows = results
+                .map(
+                    (item) =>
+                        `<tr><td>${escapeHtml(item.item)}</td><td>${escapeHtml(item.location)}</td><td>${escapeHtml(item.date)}</td><td>${escapeHtml(item.contact)}</td></tr>`
+                )
+                .join('');
+            resultsDiv.innerHTML = `
+                <h3 class="visually-hidden">Search results</h3>
+                <div class="table-wrap"><table class="data-table"><thead><tr>
+                    <th scope="col">Item</th><th scope="col">Location</th><th scope="col">Date</th><th scope="col">Contact</th>
+                </tr></thead><tbody>${rows}</tbody></table></div>`;
+        }
+
+        async function searchItems() {
+            const input = document.getElementById('search-input');
+            const term = input.value.trim().toLowerCase();
+            const resultsDiv = document.getElementById('search-results');
+            if (!term) {
+                resultsDiv.innerHTML = '<p class="msg-error">Please enter a search term.</p>';
+                return;
+            }
+            const localItems = getAllListings();
+            const apiItems = await fetchItems();
+            const allItems = [...localItems, ...apiItems];
+            const results = allItems.filter((item) => item.item.toLowerCase().includes(term));
+            displayResults(results);
+        }
+
+        function getAllListings() {
+            const rows = [...document.querySelectorAll('#lost-tbody tr, #found-tbody tr')];
+            return rows.map((tr) => {
+                const cells = tr.querySelectorAll('td');
+                return {
+                    item: cells[0]?.textContent.trim() || '',
+                    location: cells[1]?.textContent.trim() || '',
+                    date: cells[2]?.textContent.trim() || '',
+                    contact: cells[3]?.textContent.trim() || '',
+                };
+            });
+        }
+
+        function formatShortDate(iso) {
+            if (!iso) return '';
+            const d = new Date(iso + 'T12:00:00');
+            if (Number.isNaN(d.getTime())) return iso;
+            return d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+        }
+
+        function addTableRow(tbody, cells) {
+            const tr = document.createElement('tr');
+            cells.forEach((text) => {
+                const td = document.createElement('td');
+                td.textContent = text;
+                tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+        }
+
+        document.getElementById('search-btn').addEventListener('click', searchItems);
+        document.getElementById('search-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                searchItems();
+            }
+        });
+
+        document.getElementById('form-lost').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const item = document.getElementById('lost-item').value.trim();
+            const location = document.getElementById('lost-location').value.trim();
+            const email = document.getElementById('lost-email').value.trim();
+            const date = document.getElementById('lost-date').value;
+            addTableRow(document.getElementById('lost-tbody'), [
+                item,
+                location,
+                formatShortDate(date) || date,
+                email,
+            ]);
+            e.target.reset();
+            showToast('Lost item added to the list below.');
+        });
+
+        document.getElementById('form-found').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const item = document.getElementById('found-item').value.trim();
+            const location = document.getElementById('found-location').value.trim();
+            const email = document.getElementById('found-email').value.trim();
+            const date = document.getElementById('found-date').value;
+            addTableRow(document.getElementById('found-tbody'), [
+                item,
+                location,
+                formatShortDate(date) || date,
+                email,
+            ]);
+            e.target.reset();
+            showToast('Found item added to the list below.');
+        });
+
+        document.getElementById('form-contact').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            e.target.reset();
+            showToast(`Thanks, ${name || 'there'} — your message has been noted (demo; no server send).`);
+        });
+
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        navToggle.addEventListener('click', () => {
+            const open = navMenu.classList.toggle('is-open');
+            navToggle.setAttribute('aria-expanded', open);
+        });
+        navMenu.querySelectorAll('a').forEach((a) => {
+            a.addEventListener('click', () => {
+                navMenu.classList.remove('is-open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    </script>
+</body>
+
+</html>
